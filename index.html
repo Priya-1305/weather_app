@@ -1,60 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="style.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Forecast </title>
-  <link rel="stylesheet" href="style.css">
+    <script>
+      const apikey = "d1375a34c346f7becc442af62943c4e1";
+      const apiurl = "https://api.openweathermap.org/data/2.5/weather";
 
-  <script>
+      async function checkWeather(city) {
+        const response = await fetch(
+          `${apiurl}?q=${city}&appid=${apikey}&units=metric`
+        );
 
-    const apikey = 'd1375a34c346f7becc442af62943c4e1';
-    const apiurl = 'https://api.openweathermap.org/data/2.5/weather';
-    const city = 'bangalore'
+        const data = await response.json();
+        console.log(data);
 
-    async function checkweather() {
-      const response = await fetch(`${apiurl}?q=${city}&appid=${apikey}&units=metric`);
-      var data = await response.json();
-      console.log(data);
-    }
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML = `${data.main.temp}°C`;
+        document.querySelector(".wind h1").innerHTML = `${data.wind.speed} Km/Hr`;
+        document.querySelector(".humidity h1").innerHTML = `${data.main.humidity}%`;
+      }
 
-    checkweather();
+      function getCity() {
+        const city = document.getElementById("cityname").value;
+        checkWeather(city);
+      }
 
-  </script>
-</head>
+      window.onload = function () {
+        checkWeather("Noida"); // Default city
+      };
+    </script>
+  </head>
 
+  <body>
+    <div class="mainContainer">
+      <div class="search_bar">
+        <div>
+          <input
+            type="text"
+            id="cityname"
+            placeholder="Find Your Weather Temperature..."
+          />
+        </div>
+        <button onclick="getCity()">
+          <img src="images/search.png" height="30px" width="30px" />
+        </button>
+      </div>
 
-
-<body>
-  <div class="mainContainer">
-
-    <div class="search_bar">
-      <div> <input type="text" placeholder="Find Your Weather Temptation..."> </div>
-      <div> <img src="images/search.png" height="30px" width="30px"> </div>
+      <div class="weather">
+        <img src="images/rain.png" />
+        <h1 class="temp">12°C</h1>
+        <h2 class="city" style="display: inline">Noida</h2>
+      </div>
     </div>
 
-    <div class="weather"> <img src="images/rain.png">
-      <h1 class="temp"> 12°C </h1>
-      <h2 class="city" style="display: inline;"> Manali </h2>
+    <div class="wind">
+      <img src="images/wind.png" />
+      <h1>8 Km/Hr</h1>
+      <h2>Wind speed</h2>
     </div>
-
-  </div>
-
-  <div class="wind">
-    <img src="images/wind.png">
-    <h1>8 Km/Hr </h1>
-    <h2>Wind speed </h2>
-  </div>
-  <div class="humidity">
-    <img src="images/humidity.png">
-    <h1> 20% </h1>
-    <h2>Humidity </h2>
-  </div>
-
-
-
-
-</body>
-
+    <div class="humidity">
+      <img src="images/humidity.png" />
+      <h1>20%</h1>
+      <h2>Humidity</h2>
+    </div>
+  </body>
 </html>
