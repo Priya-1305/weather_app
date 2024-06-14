@@ -1,9 +1,9 @@
 *{
-    background-color:#f4f4f4;
+    background-color:#000309;
     margin:0px;
     padding:0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-image: url('images/download.jpeg');
+   
     background-size:cover;
 
 
@@ -56,13 +56,21 @@
     
    
 }
-.search_bar img{
-    background-color: white; 
-    background-image: none;  
-    opacity:1;  
-    border: none;
-    outline: none; 
+.searchicon button {
+   border: 0;
+   outline: none;
+   background-image: none;
+   background-color: white;
+
 }
+ .searchicon i{
+    background-image: none;
+    background-color: white;
+    outline: none;
+    border: 0;
+    font-size: 25px;
+ }
+
 
   
 
