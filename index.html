@@ -22,7 +22,6 @@
 
       const weatherIcon = document.querySelector("#weatherIcon");
 
-      // Adjust the condition strings to match the API response
       if (data.weather[0].main == "Clear") {
         weatherIcon.src = "images/clear.png";
       } else if (data.weather[0].main == "Clouds") {
@@ -32,7 +31,7 @@
       } else if (data.weather[0].main == "Snow") {
         weatherIcon.src = "images/snow.png";
       } else {
-        weatherIcon.src = "images/default.png"; // A default image for other weather conditions
+        weatherIcon.src = "images/default.png";
       }
     }
 
@@ -42,7 +41,7 @@
     }
 
     window.onload = function () {
-      checkWeather("Noida"); // Default city
+      checkWeather("Noida");
     };
   </script>
 </head>
@@ -67,15 +66,17 @@
     </div>
   </div>
 
-  <div class="wind">
-    <img src="images/wind.png" />
-    <h1>8 Km/Hr</h1>
-    <h2>Wind speed</h2>
-  </div>
-  <div class="humidity">
-    <img src="images/humidity.png" />
-    <h1>20%</h1>
-    <h2>Humidity</h2>
+  <div class="bottom-container">
+    <div class="wind">
+      <img src="images/wind.png" />
+      <h1>8 Km/Hr</h1>
+      <h2>Wind speed</h2>
+    </div>
+    <div class="humidity">
+      <img src="images/humidity.png" />
+      <h1>20%</h1>
+      <h2>Humidity</h2>
+    </div>
   </div>
 </body>
 </html>
